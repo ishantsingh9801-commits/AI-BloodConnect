@@ -1,0 +1,6 @@
+{
+  "name": "AI BloodConnect",
+  "description": "Emergency Blood Availability & Smart Donor Matching System with real-time inventory simulation and deterministic compatibility matching.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
