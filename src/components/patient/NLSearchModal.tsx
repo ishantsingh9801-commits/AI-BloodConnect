@@ -18,10 +18,10 @@ interface NLSearchModalProps {
 }
 
 const SAMPLE_QUERIES = [
-  'I urgently need 2 units of O- blood near Hospital Alpha for accident ICU patient.',
-  'Critical emergency: Require 3 bags of B+ blood at St. Jude Trauma Center right now.',
-  'Need 1 unit of A- negative blood near City Care Hospital for scheduled surgery.',
-  'Looking for 2 units of O+ blood for post-operative stabilization.',
+  'I urgently need 2 units of O- blood near AIIMS Delhi for accident ICU patient.',
+  'Critical emergency: Require 3 bags of B+ blood at Max Super Speciality Hospital Saket right now.',
+  'Need 1 unit of A- negative blood near Safdarjung Hospital for trauma surgery.',
+  'Looking for 2 units of O+ blood near Sir Ganga Ram Hospital for post-operative support.',
 ];
 
 export const NLSearchModal: React.FC<NLSearchModalProps> = ({ isOpen, onClose, onConfirmRequest }) => {
@@ -32,11 +32,11 @@ export const NLSearchModal: React.FC<NLSearchModalProps> = ({ isOpen, onClose, o
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Editable fields once parsed
-  const [patientName, setPatientName] = useState('Emergency Patient');
+  const [patientName, setPatientName] = useState('Emergency Patient (Delhi NCR)');
   const [bloodGroup, setBloodGroup] = useState<BloodGroup>('O-');
   const [units, setUnits] = useState<number>(2);
   const [emergencyLevel, setEmergencyLevel] = useState<EmergencyLevel>('CRITICAL');
-  const [locationName, setLocationName] = useState('Hospital Alpha ICU');
+  const [locationName, setLocationName] = useState('AIIMS South Trauma ICU');
   const [notes, setNotes] = useState('');
 
   if (!isOpen) return null;
@@ -55,7 +55,7 @@ export const NLSearchModal: React.FC<NLSearchModalProps> = ({ isOpen, onClose, o
         if (res.data.unitsRequired) setUnits(res.data.unitsRequired);
         if (res.data.emergencyLevel) setEmergencyLevel(res.data.emergencyLevel);
         if (res.data.hospitalName || res.data.locationName) {
-          setLocationName(res.data.hospitalName || res.data.locationName || 'Central Metro Hospital');
+          setLocationName(res.data.hospitalName || res.data.locationName || 'AIIMS Delhi Emergency Ward');
         }
         if (res.data.notes) setNotes(res.data.notes);
         if (res.data.patientName) setPatientName(res.data.patientName);

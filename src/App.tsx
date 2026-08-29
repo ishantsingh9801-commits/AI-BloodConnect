@@ -10,6 +10,7 @@ import { DonorDashboard } from './components/donor/DonorDashboard';
 import { HospitalDashboard } from './components/hospital/HospitalDashboard';
 import { SmartMatchExplainer } from './components/matching/SmartMatchExplainer';
 import { DemandAnalytics } from './components/analytics/DemandAnalytics';
+import { LiveDelhiMap } from './components/common/LiveDelhiMap';
 import { API } from './lib/api';
 import {
   BloodGroup,
@@ -245,6 +246,7 @@ export default function App() {
                     currentUser={currentUser}
                     requests={requests}
                     hospitals={hospitals}
+                    donors={donors}
                     donorMatches={donorMatches}
                     selectedRequest={selectedRequest}
                     onSelectRequest={(r) => setSelectedRequest(r)}
@@ -292,7 +294,28 @@ export default function App() {
               </motion.div>
             )}
 
-            {/* TAB 3: AI Analytics */}
+            {/* TAB 3: Live Delhi NCR GPS Map */}
+            {activeTab === 'map' && (
+              <motion.div
+                key="tab-map"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.25, ease: 'easeOut' }}
+                className="space-y-6"
+              >
+                <LiveDelhiMap
+                  hospitals={hospitals}
+                  donors={donors}
+                  requests={requests}
+                  selectedRequest={selectedRequest}
+                  highlightBloodGroup={selectedRequest?.bloodGroup}
+                  onSelectRequest={(req) => setSelectedRequest(req)}
+                />
+              </motion.div>
+            )}
+
+            {/* TAB 4: AI Analytics */}
             {activeTab === 'analytics' && (
               <motion.div
                 key="tab-analytics"

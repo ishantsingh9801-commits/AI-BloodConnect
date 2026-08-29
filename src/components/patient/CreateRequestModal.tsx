@@ -108,7 +108,7 @@ export const CreateRequestModal: React.FC<CreateRequestModalProps> = ({
             <input
               type="text"
               required
-              placeholder="e.g. Robert Jenkins (ICU Bed 4)"
+              placeholder="e.g. Rameshwar Sharma (AIIMS ICU Bed 12)"
               value={patientName}
               onChange={(e) => setPatientName(e.target.value)}
               className="w-full bg-black/60 border border-white/15 rounded-2xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-red-500 font-medium placeholder-gray-500"

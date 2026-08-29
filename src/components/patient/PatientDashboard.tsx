@@ -22,12 +22,14 @@ import {
   XCircle,
   Zap,
 } from 'lucide-react';
-import { BloodGroup, BloodRequest, Hospital, RankedDonorMatch, User } from '../../types';
+import { BloodGroup, BloodRequest, Donor, Hospital, RankedDonorMatch, User } from '../../types';
+import { LiveDelhiMap } from '../common/LiveDelhiMap';
 
 interface PatientDashboardProps {
   currentUser: User | null;
   requests: BloodRequest[];
   hospitals: Hospital[];
+  donors?: Donor[];
   donorMatches: RankedDonorMatch[];
   selectedRequest: BloodRequest | null;
   onSelectRequest: (req: BloodRequest) => void;
@@ -41,6 +43,7 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({
   currentUser,
   requests,
   hospitals,
+  donors = [],
   donorMatches,
   selectedRequest,
   onSelectRequest,
@@ -440,13 +443,25 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({
                     <span className="flex items-center gap-1.5 text-gray-300 font-medium">
                       <Phone className="w-3 h-3 text-red-400" /> {hosp.phone}
                     </span>
-                    <span className="text-gray-500 text-[10px] uppercase font-mono">Demo Stock</span>
+                    <span className="text-gray-500 text-[10px] uppercase font-mono">Delhi NCR</span>
                   </div>
                 </div>
               );
             })}
           </div>
         </div>
+      </div>
+
+      {/* Live Delhi NCR Dispatch & Distance Radar Map */}
+      <div className="pt-2">
+        <LiveDelhiMap
+          hospitals={hospitals}
+          donors={donors}
+          requests={requests}
+          selectedRequest={selectedRequest}
+          highlightBloodGroup={currentActiveGroup}
+          onSelectRequest={onSelectRequest}
+        />
       </div>
     </div>
   );

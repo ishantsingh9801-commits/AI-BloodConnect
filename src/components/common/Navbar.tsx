@@ -4,6 +4,7 @@ import {
   BarChart3,
   Bell,
   Building2,
+  Compass,
   Heart,
   HeartHandshake,
   HeartPulse,
@@ -122,7 +123,29 @@ export const Navbar: React.FC<NavbarProps> = ({
               )}
               <span className="relative z-10 flex items-center gap-1.5">
                 <Scale className="w-3.5 h-3.5" />
-                <span>Compatibility Matrix</span>
+                <span>Compatibility</span>
+              </span>
+            </button>
+
+            <button
+              id="nav-tab-map"
+              onClick={() => onTabChange('map')}
+              className={`relative flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer select-none ${
+                activeTab === 'map'
+                  ? 'text-white shadow-lg shadow-red-900/40'
+                  : 'text-gray-400 hover:text-white hover:bg-white/5'
+              }`}
+            >
+              {activeTab === 'map' && (
+                <motion.div
+                  layoutId="active-desktop-tab"
+                  className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-700 rounded-xl border border-red-500/40"
+                  transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                />
+              )}
+              <span className="relative z-10 flex items-center gap-1.5">
+                <Compass className="w-3.5 h-3.5 text-red-400" />
+                <span>Delhi Live Map</span>
               </span>
             </button>
 
@@ -223,44 +246,56 @@ export const Navbar: React.FC<NavbarProps> = ({
       </header>
 
       {/* Mobile Bottom Navigation Bar for Perfect Mobile Usability */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#080a10]/95 backdrop-blur-2xl border-t border-white/[0.1] px-3 py-2 shadow-2xl">
-        <div className="grid grid-cols-3 gap-1">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#080a10]/95 backdrop-blur-2xl border-t border-white/[0.1] px-2 py-1.5 shadow-2xl">
+        <div className="grid grid-cols-4 gap-1">
           <button
             onClick={() => onTabChange('dashboard')}
-            className={`flex flex-col items-center justify-center py-2 px-1 rounded-xl text-[11px] font-bold transition-all duration-200 cursor-pointer active:scale-95 ${
+            className={`flex flex-col items-center justify-center py-1.5 px-1 rounded-xl text-[10px] font-bold transition-all duration-200 cursor-pointer active:scale-95 ${
               activeTab === 'dashboard'
                 ? 'bg-red-500/20 text-red-300 border border-red-500/40 shadow-sm'
                 : 'text-gray-400 hover:text-white'
             }`}
           >
-            {activeRole === 'patient' && <User className="w-4 h-4 mb-0.5" />}
-            {activeRole === 'donor' && <Heart className="w-4 h-4 mb-0.5" />}
-            {activeRole === 'hospital' && <Building2 className="w-4 h-4 mb-0.5" />}
+            {activeRole === 'patient' && <User className="w-3.5 h-3.5 mb-0.5" />}
+            {activeRole === 'donor' && <Heart className="w-3.5 h-3.5 mb-0.5" />}
+            {activeRole === 'hospital' && <Building2 className="w-3.5 h-3.5 mb-0.5" />}
             <span>Portal</span>
           </button>
 
           <button
             onClick={() => onTabChange('matching')}
-            className={`flex flex-col items-center justify-center py-2 px-1 rounded-xl text-[11px] font-bold transition-all duration-200 cursor-pointer active:scale-95 ${
+            className={`flex flex-col items-center justify-center py-1.5 px-1 rounded-xl text-[10px] font-bold transition-all duration-200 cursor-pointer active:scale-95 ${
               activeTab === 'matching'
                 ? 'bg-red-500/20 text-red-300 border border-red-500/40 shadow-sm'
                 : 'text-gray-400 hover:text-white'
             }`}
           >
-            <Scale className="w-4 h-4 mb-0.5" />
-            <span>Compatibility</span>
+            <Scale className="w-3.5 h-3.5 mb-0.5" />
+            <span>Matrix</span>
+          </button>
+
+          <button
+            onClick={() => onTabChange('map')}
+            className={`flex flex-col items-center justify-center py-1.5 px-1 rounded-xl text-[10px] font-bold transition-all duration-200 cursor-pointer active:scale-95 ${
+              activeTab === 'map'
+                ? 'bg-red-500/20 text-red-300 border border-red-500/40 shadow-sm'
+                : 'text-gray-400 hover:text-white'
+            }`}
+          >
+            <Compass className="w-3.5 h-3.5 mb-0.5 text-red-400" />
+            <span>Delhi Map</span>
           </button>
 
           <button
             onClick={() => onTabChange('analytics')}
-            className={`flex flex-col items-center justify-center py-2 px-1 rounded-xl text-[11px] font-bold transition-all duration-200 cursor-pointer active:scale-95 ${
+            className={`flex flex-col items-center justify-center py-1.5 px-1 rounded-xl text-[10px] font-bold transition-all duration-200 cursor-pointer active:scale-95 ${
               activeTab === 'analytics'
                 ? 'bg-red-500/20 text-red-300 border border-red-500/40 shadow-sm'
                 : 'text-gray-400 hover:text-white'
             }`}
           >
-            <BarChart3 className="w-4 h-4 mb-0.5" />
-            <span>AI Analytics</span>
+            <BarChart3 className="w-3.5 h-3.5 mb-0.5" />
+            <span>Analytics</span>
           </button>
         </div>
       </div>

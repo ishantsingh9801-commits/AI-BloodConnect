@@ -194,20 +194,22 @@ function fallbackRuleBasedParser(rawQuery: string): ParsedNLRequest {
     emergencyLevel = 'NORMAL';
   }
 
-  // Extract Hospital or Location hints
+  // Extract Hospital or Location hints (Delhi NCR)
   let hospitalName: string | undefined;
-  if (query.includes('hospital alpha') || query.includes('alpha hospital')) hospitalName = 'Hospital Alpha (Metro Central)';
-  else if (query.includes('hospital beta') || query.includes('beta hospital')) hospitalName = 'Hospital Beta (City Care)';
-  else if (query.includes('st. jude') || query.includes('st jude')) hospitalName = 'St. Jude Blood Bank & Trauma Center';
-  else if (query.includes('apex')) hospitalName = 'Apex Super Specialty Hospital';
-  else if (query.includes('lifeline')) hospitalName = 'Lifeline Red Cross Blood Center';
+  if (query.includes('aiims') || query.includes('all india institute')) hospitalName = 'AIIMS (All India Institute of Medical Sciences)';
+  else if (query.includes('safdarjung') || query.includes('vardhman')) hospitalName = 'Safdarjung Hospital & Vardhman Trauma Centre';
+  else if (query.includes('max') || query.includes('saket')) hospitalName = 'Max Super Speciality Hospital (Saket)';
+  else if (query.includes('fortis') || query.includes('okhla')) hospitalName = 'Fortis Escorts Heart Institute (Okhla)';
+  else if (query.includes('ganga ram') || query.includes('sgrh')) hospitalName = 'Sir Ganga Ram Hospital Blood Bank';
+  else if (query.includes('apollo') || query.includes('sarita vihar')) hospitalName = 'Indraprastha Apollo Hospital (Sarita Vihar)';
+  else if (query.includes('medanta') || query.includes('gurugram') || query.includes('gurgaon')) hospitalName = 'Medanta - The Medicity (Gurugram NCR)';
 
   return {
     bloodGroup,
     unitsRequired,
     emergencyLevel,
     hospitalName,
-    locationName: hospitalName ? `${hospitalName}, Emergency Ward` : 'Central Metro Region',
+    locationName: hospitalName ? `${hospitalName}, Emergency Ward` : 'Delhi NCR Central Region',
     notes: 'Parsed from natural language emergency input.',
     confidence: bloodGroup ? 0.88 : 0.65,
     rawQuery,
