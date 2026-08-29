@@ -1,3 +1,7 @@
+<img width="1911" height="972" alt="Screenshot 2026-08-29 183554" src="https://github.com/user-attachments/assets/0b1970e4-6acc-4302-8c7a-4f18a2817900" />
+<img width="1917" height="971" alt="Screenshot 2026-08-29 183451" src="https://github.com/user-attachments/assets/44ebe929-d7bb-4828-90c1-7ce42d9cbddb" />
+<img width="1917" height="957" alt="Screenshot 2026-08-29 183414" src="https://github.com/user-attachments/assets/3b01f636-cfd1-4c7f-a26c-66ea439daf16" />
+<img width="1916" height="960" alt="Screenshot 2026-08-29 183344" src="https://github.com/user-attachments/assets/b82af45d-26c6-44f3-8db2-5305ea8978fb" />
 🩸 AI BloodConnect
 
 AI-powered emergency blood availability and smart donor matching platform.
